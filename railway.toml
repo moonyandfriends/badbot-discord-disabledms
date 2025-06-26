@@ -5,4 +5,4 @@ builder = "nixpacks"
 startCommand = "python main.py"
 
 [cron]
-schedule = "0 2 * * *" 
+schedule = "*/5 * * * *" 
