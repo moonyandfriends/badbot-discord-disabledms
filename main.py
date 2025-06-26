@@ -12,6 +12,7 @@ Version: 1.0.0
 
 import asyncio
 import datetime
+from datetime import timezone
 import json
 import logging
 import os
@@ -69,7 +70,7 @@ class DiscordDMDisabler:
         Returns:
             ISO 8601 formatted timestamp
         """
-        now = datetime.datetime.utcnow()
+        now = datetime.datetime.now(timezone.utc)
         disable_until = now + datetime.timedelta(hours=hours)
         return disable_until.isoformat()
     
@@ -170,7 +171,7 @@ class DiscordDMDisabler:
                     },
                     {
                         "name": "Timestamp",
-                        "value": datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC"),
+                        "value": datetime.datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC"),
                         "inline": False
                     }
                 ],
