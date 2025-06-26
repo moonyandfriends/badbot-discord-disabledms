@@ -21,14 +21,14 @@ load_dotenv()
 
 def test_bot_token() -> bool:
     """Test if the bot token is valid by making a simple API call."""
-    bot_token = os.getenv('DISCORD_BOT_TOKEN')
+    bot_token = os.getenv('badbot_discord_token')
     
     if not bot_token:
-        print("❌ DISCORD_BOT_TOKEN is not set")
+        print("❌ badbot_discord_token is not set")
         return False
     
     if bot_token == 'your_bot_token_here':
-        print("❌ DISCORD_BOT_TOKEN is still set to the example value")
+        print("❌ badbot_discord_token is still set to the example value")
         return False
     
     # Test the bot token by getting bot information
@@ -55,14 +55,14 @@ def test_bot_token() -> bool:
 
 def test_webhook_url() -> bool:
     """Test if the webhook URL is valid."""
-    webhook_url = os.getenv('DISCORD_WEBHOOK_URL')
+    webhook_url = os.getenv('badbot_logs_webhookurl')
     
     if not webhook_url:
-        print("❌ DISCORD_WEBHOOK_URL is not set")
+        print("❌ badbot_logs_webhookurl is not set")
         return False
     
     if webhook_url == 'your_webhook_url_here':
-        print("❌ DISCORD_WEBHOOK_URL is still set to the example value")
+        print("❌ badbot_logs_webhookurl is still set to the example value")
         return False
     
     # Test the webhook by sending a test message

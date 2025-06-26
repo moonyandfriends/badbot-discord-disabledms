@@ -309,7 +309,7 @@ def validate_environment() -> bool:
     Returns:
         True if all required variables are present, False otherwise
     """
-    required_vars = ['DISCORD_BOT_TOKEN', 'DISCORD_WEBHOOK_URL']
+    required_vars = ['badbot_discord_token', 'badbot_logs_webhookurl']
     missing_vars = []
     
     for var in required_vars:
@@ -333,8 +333,8 @@ def main():
         sys.exit(1)
     
     # Load configuration
-    bot_token = os.getenv('DISCORD_BOT_TOKEN')
-    webhook_url = os.getenv('DISCORD_WEBHOOK_URL')
+    bot_token = os.getenv('badbot_discord_token')
+    webhook_url = os.getenv('badbot_logs_webhookurl')
     
     # Type checking for required environment variables
     if not bot_token or not webhook_url:

@@ -34,8 +34,8 @@ The following environment variables are required:
 
 ### Required Variables
 
-- `DISCORD_BOT_TOKEN`: Your Discord bot token
-- `DISCORD_WEBHOOK_URL`: Discord webhook URL for notifications
+- `badbot_discord_token`: Your Discord bot token
+- `badbot_logs_webhookurl`: Discord webhook URL for notifications
 
 ### Server Configuration
 
@@ -87,8 +87,8 @@ pip install -r requirements.txt
 
 3. Create a `.env` file with your configuration:
 ```env
-DISCORD_BOT_TOKEN=your_bot_token_here
-DISCORD_WEBHOOK_URL=your_webhook_url_here
+badbot_discord_token=your_bot_token_here
+badbot_logs_webhookurl=your_webhook_url_here
 SERVER_1=988945059783278602:My Gaming Server
 SERVER_2=123456789012345678:Community Hub
 ```
@@ -106,8 +106,8 @@ python main.py
 2. Connect your Railway account to GitHub
 3. Create a new Railway project from your GitHub repository
 4. Add the required environment variables in Railway dashboard:
-   - `DISCORD_BOT_TOKEN`
-   - `DISCORD_WEBHOOK_URL`
+   - `badbot_discord_token`
+   - `badbot_logs_webhookurl`
    - `SERVERS` (recommended) or `SERVER_1`, `SERVER_2`, etc.
 
 ### Manual Deployment
@@ -130,8 +130,8 @@ railway up
 
 4. Set environment variables:
 ```bash
-railway variables set DISCORD_BOT_TOKEN=your_bot_token
-railway variables set DISCORD_WEBHOOK_URL=your_webhook_url
+railway variables set badbot_discord_token=your_bot_token
+railway variables set badbot_logs_webhookurl=your_webhook_url
 railway variables set SERVERS=988945059783278602:My Gaming Server,123456789012345678:Community Hub
 ```
 
