@@ -1,0 +1,19 @@
+name: Discord DM Disabler Cron Job
+
+on:
+  schedule:
+    # Run every 5 minutes for testing
+    - cron: '*/5 * * * *'
+  workflow_dispatch: # Allow manual triggers
+
+jobs:
+  trigger-railway:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Railway deployment
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d '{"serviceId": "${{ secrets.RAILWAY_SERVICE_ID }}"}' \
+            "https://railway.app/api/v2/services/${{ secrets.RAILWAY_SERVICE_ID }}/deployments" 
