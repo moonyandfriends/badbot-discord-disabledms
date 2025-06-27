@@ -328,32 +328,32 @@ def main():
     """Main function to run the Discord DM disabler."""
     logger.info("Starting Discord DM Disabler")
     
-    # Validate environment
-    if not validate_environment():
-        logger.error("Environment validation failed. Exiting.")
-        sys.exit(1)
-    
-    # Load configuration
-    bot_token = os.getenv('badbot_discord_token')
-    webhook_url = os.getenv('badbot_logs_webhookurl')
-    
-    # Type checking for required environment variables
-    if not bot_token or not webhook_url:
-        logger.error("Required environment variables are missing or empty.")
-        sys.exit(1)
-    
-    servers = load_servers_from_env()
-    
-    if not servers:
-        logger.error("No servers configured. Please set SERVER_1, SERVER_2, etc. environment variables.")
-        sys.exit(1)
-    
-    logger.info(f"Loaded {len(servers)} servers for processing")
-    
-    # Initialize disabler
-    disabler = DiscordDMDisabler(bot_token, webhook_url)
-    
     try:
+        # Validate environment
+        if not validate_environment():
+            logger.error("Environment validation failed. Exiting.")
+            sys.exit(1)
+        
+        # Load configuration
+        bot_token = os.getenv('badbot_discord_token')
+        webhook_url = os.getenv('badbot_logs_webhookurl')
+        
+        # Type checking for required environment variables
+        if not bot_token or not webhook_url:
+            logger.error("Required environment variables are missing or empty.")
+            sys.exit(1)
+        
+        servers = load_servers_from_env()
+        
+        if not servers:
+            logger.error("No servers configured. Please set either SERVERS or SERVER_1, SERVER_2, etc. environment variables.")
+            sys.exit(1)
+        
+        logger.info(f"Loaded {len(servers)} servers for processing")
+        
+        # Initialize disabler
+        disabler = DiscordDMDisabler(bot_token, webhook_url)
+        
         # Process all servers
         disabler.process_servers(servers)
         logger.info("Discord DM Disabler completed successfully")
@@ -361,6 +361,10 @@ def main():
     except Exception as e:
         logger.error(f"Unexpected error during execution: {str(e)}")
         sys.exit(1)
+    finally:
+        # Ensure clean exit
+        logger.info("Script execution finished. Exiting...")
+        sys.exit(0)
 
 
 if __name__ == "__main__":
